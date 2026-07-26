@@ -2,17 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { AboutSection } from "@/components/sections/AboutSection";
 import { CtaBand } from "@/components/sections/CtaBand";
-import { DepartmentsSection } from "@/components/sections/DepartmentsSection";
-import { FaqSection } from "@/components/sections/FaqSection";
-import { Hero } from "@/components/sections/Hero";
-import { TimelineSection } from "@/components/sections/TimelineSection";
 import { WhyJoinSection } from "@/components/sections/WhyJoinSection";
+import { PageIntro } from "@/components/layout/PageIntro";
 
-const title = "Enactus VIT Chennai — Recruitment 2026";
+const title = "About Enactus VIT Chennai";
 const description =
-  "Applications are open for the Enactus VIT Chennai 2026 cohort. Pick two departments, answer a few questions and join a team of student changemakers.";
+  "Our mission, vision, values and the community behind Enactus VIT Chennai — a student-run chapter turning entrepreneurial action into social impact.";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title },
@@ -23,18 +20,19 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Home,
+  component: AboutPage,
 });
 
-function Home() {
+function AboutPage() {
   return (
     <>
-      <Hero />
+      <PageIntro
+        eyebrow="About us"
+        title="A community of doers and thinkers."
+        description="We build ventures, not one-off events. Every project starts with a real person, a real problem and a plan to make it sustainable."
+      />
       <AboutSection />
-      <DepartmentsSection />
       <WhyJoinSection />
-      <TimelineSection />
-      <FaqSection />
       <CtaBand />
     </>
   );
