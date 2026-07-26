@@ -16,6 +16,8 @@ import { useApplication } from "@/hooks/use-application";
 
 const TOTAL_STEPS = 6;
 
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVMAQoqN9Mlc5dhofS_fAvvg7uJfbR-97z31HWygDjRAszmRejDTPjuvyQRPfSmUBDuw/exec";
+
 export function ApplyFlow({ defaultFirst }: { defaultFirst?: string }) {
   const navigate = useNavigate();
   const { state, hydrated, setAnswer, setPreference, markDepartmentApplied, reset } = useApplication();
@@ -23,6 +25,7 @@ export function ApplyFlow({ defaultFirst }: { defaultFirst?: string }) {
   const [errors, setErrors] = useState<string[]>([]);
   const [emailError, setEmailError] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const { first, second, answers } = state;
 
@@ -101,15 +104,32 @@ export function ApplyFlow({ defaultFirst }: { defaultFirst?: string }) {
     goTo(step + 1);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setSubmitting(true);
-    // Submission hook-up point: post `state` to Lovable Cloud / Supabase here.
-    window.setTimeout(() => {
+    setSubmitError(false);
+    try {
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        // text/plain avoids a CORS preflight (OPTIONS) request, which Apps
+        // Script web apps can't handle — the body is still a JSON string.
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ first, second, answers }),
+      });
+
+      const result = await response.json();
+      if (result.status !== "success") {
+        throw new Error(result.message || "Submission failed");
+      }
+
       if (first) markDepartmentApplied(first);
       if (second) markDepartmentApplied(second);
       reset();
       navigate({ to: "/success" });
-    }, 450);
+    } catch (err) {
+      console.error("Application submission failed:", err);
+      setSubmitError(true);
+      setSubmitting(false);
+    }
   };
 
   if (!hydrated) {
@@ -164,6 +184,12 @@ export function ApplyFlow({ defaultFirst }: { defaultFirst?: string }) {
       {emailError ? (
         <p className="mt-8 rounded-xl border border-destructive/30 bg-destructive/5 px-5 py-4 text-sm font-medium text-destructive">
           Please use a valid @vitstudent.ac.in email address.
+        </p>
+      ) : null}
+
+      {submitError ? (
+        <p className="mt-8 rounded-xl border border-destructive/30 bg-destructive/5 px-5 py-4 text-sm font-medium text-destructive">
+          Something went wrong submitting your application. Please check your connection and try again.
         </p>
       ) : null}
 
