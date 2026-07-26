@@ -5,7 +5,6 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { DepartmentsSection } from "@/components/sections/DepartmentsSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { Hero } from "@/components/sections/Hero";
-import { TimelineSection } from "@/components/sections/TimelineSection";
 import { WhyJoinSection } from "@/components/sections/WhyJoinSection";
 
 const title = "Enactus VIT Chennai — Recruitment 2026";
@@ -31,9 +30,8 @@ function Home() {
     <>
       <Hero />
       <AboutSection />
-      <DepartmentsSection />
       <WhyJoinSection />
-      <TimelineSection />
+      <DepartmentsSection />
       <FaqSection />
       <CtaBand />
     </>

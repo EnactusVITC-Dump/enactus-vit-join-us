@@ -51,11 +51,6 @@ export function AboutSection() {
             ))}
           </div>
 
-          <Button asChild size="md" className="mt-12">
-            <Link to="/about">
-              Know more about us <ArrowUpRight />
-            </Link>
-          </Button>
         </Reveal>
 
         <Reveal delay={0.15}>

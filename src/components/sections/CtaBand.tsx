@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+
 import { ArrowUpRight } from "lucide-react";
 
 import { Reveal } from "@/components/animations/Reveal";
@@ -19,9 +19,9 @@ export function CtaBand() {
               </p>
             </div>
             <Button asChild size="lg" variant="ink">
-              <Link to="/apply">
+              <a href="/#departments">
                 Start your application <ArrowUpRight />
-              </Link>
+              </a>
             </Button>
           </div>
         </Reveal>

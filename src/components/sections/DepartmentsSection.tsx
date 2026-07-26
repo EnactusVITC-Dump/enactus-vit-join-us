@@ -1,5 +1,5 @@
-import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Code2, Megaphone, PenTool, Settings, Wallet } from "lucide-react";
+
+import { ArrowUpRight, Code2, Megaphone, PenTool, Settings } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import { Reveal } from "@/components/animations/Reveal";
@@ -9,8 +9,7 @@ import { departments, type DepartmentId } from "@/data/departments";
 
 export const departmentIcons: Record<DepartmentId, LucideIcon> = {
   tech: Code2,
-  creative: PenTool,
-  finance: Wallet,
+  design: PenTool,
   operations: Settings,
   mns: Megaphone,
 };
@@ -32,11 +31,6 @@ export function DepartmentsSection({ detailed = false }: { detailed?: boolean })
             Five departments, one shared goal. Pick two preferences when you apply — you&apos;ll
             answer a short set of questions for each.
           </p>
-          <Button asChild size="md" variant="ink" className="mt-8">
-            <Link to="/apply">
-              Explore roles <ArrowUpRight />
-            </Link>
-          </Button>
         </Reveal>
       </div>
 
@@ -64,6 +58,13 @@ export function DepartmentsSection({ detailed = false }: { detailed?: boolean })
                     ))}
                   </ul>
                 ) : null}
+                <div className="mt-6 pt-6 border-t border-hairline mt-auto">
+                  <Button asChild size="sm" className="w-full">
+                    <a href={`/apply/${d.id}`}>
+                      Apply Now <ArrowUpRight />
+                    </a>
+                  </Button>
+                </div>
               </Card>
             </Reveal>
           );
@@ -79,9 +80,9 @@ export function DepartmentsSection({ detailed = false }: { detailed?: boolean })
               </p>
             </div>
             <Button asChild size="sm" className="mt-8 self-start">
-              <Link to="/apply">
-                Start application <ArrowUpRight />
-              </Link>
+              <a href="/#faq">
+                Got questions? <ArrowUpRight />
+              </a>
             </Button>
           </Card>
         </Reveal>

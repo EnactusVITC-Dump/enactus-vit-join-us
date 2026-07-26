@@ -40,9 +40,9 @@ export function WhyJoinSection() {
             behind something that lasts.
           </p>
           <Button asChild size="md" className="mt-10">
-            <Link to="/apply">
+            <a href="/#departments">
               Apply now <ArrowUpRight />
-            </Link>
+            </a>
           </Button>
         </Reveal>
 

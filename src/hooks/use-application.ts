@@ -6,19 +6,17 @@ export type AnswerValue = string | string[];
 export type Answers = Record<string, AnswerValue>;
 
 export interface ApplicationState {
-  first: DepartmentId | null;
-  second: DepartmentId | null;
+  appliedDepartments: DepartmentId[];
   answers: Answers;
 }
 
-const STORAGE_KEY = "enactus-vitc-application";
+const STORAGE_KEY = "enactus-vitc-application-v2";
 
-const empty: ApplicationState = { first: null, second: null, answers: {} };
+const empty: ApplicationState = { appliedDepartments: [], answers: {} };
 
 /**
- * Application draft state, persisted to sessionStorage so a refresh mid-flow
- * doesn't lose answers. Swap this hook's internals for Supabase/Firebase later
- * without touching any UI component.
+ * Application state, persisted to localStorage so we can track the maximum 2 departments rule
+ * across multiple sessions/tabs.
  */
 export function useApplication() {
   const [state, setState] = useState<ApplicationState>(empty);
@@ -26,7 +24,7 @@ export function useApplication() {
 
   useEffect(() => {
     try {
-      const raw = sessionStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) setState({ ...empty, ...(JSON.parse(raw) as ApplicationState) });
     } catch {
       /* ignore malformed drafts */
@@ -37,7 +35,7 @@ export function useApplication() {
   useEffect(() => {
     if (!hydrated) return;
     try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     } catch {
       /* storage unavailable */
     }
@@ -47,22 +45,24 @@ export function useApplication() {
     setState((prev) => ({ ...prev, answers: { ...prev.answers, [id]: value } }));
   }, []);
 
-  const setPreference = useCallback((slot: "first" | "second", value: DepartmentId | null) => {
+  const markDepartmentApplied = useCallback((id: DepartmentId) => {
     setState((prev) => {
-      const next = { ...prev, [slot]: value } as ApplicationState;
-      if (slot === "first" && next.second === value) next.second = null;
-      return next;
+      if (prev.appliedDepartments.includes(id)) return prev;
+      return {
+        ...prev,
+        appliedDepartments: [...prev.appliedDepartments, id],
+      };
     });
   }, []);
 
   const reset = useCallback(() => {
     setState(empty);
     try {
-      sessionStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(STORAGE_KEY);
     } catch {
       /* noop */
     }
   }, []);
 
-  return { state, hydrated, setAnswer, setPreference, reset };
+  return { state, hydrated, setAnswer, markDepartmentApplied, reset };
 }

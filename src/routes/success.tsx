@@ -67,9 +67,6 @@ function SuccessPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                {step.date}
-              </p>
               <p className="display mt-3 text-2xl">{step.title}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {step.description}

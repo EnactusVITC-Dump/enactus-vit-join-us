@@ -58,15 +58,15 @@ export function Footer() {
           <div>
             <h3 className="display text-lg text-primary">Quick Links</h3>
             <ul className="mt-6 space-y-3 text-sm">
-              {[...navLinks, { label: "Apply Now", to: "/apply" as const }].map((l) => (
-                <li key={l.to}>
-                  <Link
-                    to={l.to}
+              {navLinks.map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
                     className="group flex items-center gap-2 text-ink-foreground/70 transition-colors hover:text-primary"
                   >
                     <ChevronRight className="size-3.5 text-primary" />
                     {l.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -77,13 +77,13 @@ export function Footer() {
             <ul className="mt-6 space-y-3 text-sm">
               {departments.map((d) => (
                 <li key={d.id}>
-                  <Link
-                    to="/departments"
+                  <a
+                    href={`/apply/${d.id}`}
                     className="group flex items-center gap-2 text-ink-foreground/70 transition-colors hover:text-primary"
                   >
                     <ChevronRight className="size-3.5 text-primary" />
                     {d.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -111,11 +111,6 @@ export function Footer() {
                 {contact.phone}
               </li>
             </ul>
-            <Button asChild size="sm" className="mt-8">
-              <Link to="/apply">
-                Apply now <ArrowUpRight />
-              </Link>
-            </Button>
           </div>
         </div>
       </div>

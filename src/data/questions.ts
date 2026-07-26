@@ -6,8 +6,7 @@ export type QuestionType =
   | "select"
   | "radio"
   | "checkbox"
-  | "link"
-  | "file";
+  | "link";
 
 export interface Question {
   id: string;
@@ -60,12 +59,7 @@ export const projectQuestions: Question[] = [
   { id: "github", label: "GitHub profile", type: "link", placeholder: "https://github.com/username" },
   { id: "linkedin", label: "LinkedIn profile", type: "link", placeholder: "https://linkedin.com/in/username" },
   { id: "portfolio", label: "Portfolio / website", type: "link", placeholder: "https://yourwork.com" },
-  {
-    id: "resume",
-    label: "Resume",
-    type: "file",
-    help: "PDF or DOC, up to 5 MB.",
-  },
+
   {
     id: "bestProject",
     label: "Your best project so far",
@@ -119,7 +113,7 @@ export const departmentQuestions: Record<DepartmentId, Question[]> = {
       required: true,
     },
   ],
-  creative: [
+  design: [
     {
       id: "creative_skills",
       label: "Where do you do your best work?",
@@ -154,35 +148,7 @@ export const departmentQuestions: Record<DepartmentId, Question[]> = {
       placeholder: "Brand, idea, and the craft decision that carried it.",
     },
   ],
-  finance: [
-    {
-      id: "finance_interest",
-      label: "Which areas interest you most?",
-      type: "checkbox",
-      options: ["Budgeting", "Financial modelling", "Auditing", "Fundraising", "Unit economics", "Grant applications"],
-      required: true,
-    },
-    {
-      id: "finance_tools",
-      label: "Spreadsheet comfort",
-      type: "radio",
-      options: ["Basic formulas", "Pivot tables and lookups", "Full models with scenarios"],
-      required: true,
-    },
-    {
-      id: "finance_case",
-      label: "A ₹50,000 grant, a rural tailoring venture. How do you allocate it?",
-      type: "textarea",
-      placeholder: "Break it down and defend the split.",
-      required: true,
-    },
-    {
-      id: "finance_sustain",
-      label: "How would you make that venture self-sustaining in a year?",
-      type: "textarea",
-      required: true,
-    },
-  ],
+
   operations: [
     {
       id: "ops_experience",

@@ -76,13 +76,8 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.28, ease }}
           >
-            <Button asChild size="lg">
-              <Link to="/apply">
-                Join the team <ArrowUpRight />
-              </Link>
-            </Button>
             <Button asChild size="lg" variant="outlineLight">
-              <Link to="/departments">Explore departments</Link>
+              <a href="/#departments">Explore departments</a>
             </Button>
           </motion.div>
         </div>

@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -30,23 +30,22 @@ export function Navbar() {
 
         <div className="hidden items-center gap-9 lg:flex">
           {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              activeOptions={{ exact: link.to === "/" }}
-              className="relative text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground data-[status=active]:text-foreground"
+            <a
+              key={link.href}
+              href={link.href}
+              className="relative text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
-              <span className="absolute -bottom-2 left-0 h-0.5 w-full origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100 data-[status=active]:scale-x-100" />
-            </Link>
+              <span className="absolute -bottom-2 left-0 h-0.5 w-full origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
+            </a>
           ))}
         </div>
 
         <div className="flex items-center gap-3">
           <Button asChild size="sm" className="hidden sm:inline-flex">
-            <Link to="/apply">
+            <a href="/#departments">
               Join the team <ArrowUpRight />
-            </Link>
+            </a>
           </Button>
           <button
             type="button"
@@ -63,19 +62,19 @@ export function Navbar() {
         <div className="border-t border-hairline bg-background lg:hidden">
           <div className="section-x flex flex-col gap-1 py-4">
             {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
+              <a
+                key={link.href}
+                href={link.href}
                 onClick={() => setOpen(false)}
                 className="rounded-lg px-2 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-muted-foreground hover:bg-accent hover:text-foreground"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
             <Button asChild size="md" className="mt-3">
-              <Link to="/apply" onClick={() => setOpen(false)}>
+              <a href="/#departments" onClick={() => setOpen(false)}>
                 Join the team <ArrowUpRight />
-              </Link>
+              </a>
             </Button>
           </div>
         </div>
