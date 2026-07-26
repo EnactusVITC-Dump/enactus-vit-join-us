@@ -1,5 +1,5 @@
 
-import { ArrowUpRight, Code2, Megaphone, PenTool, Settings } from "lucide-react";
+import { ArrowUpRight, Code2, Coins, Megaphone, PenTool, Settings } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import { Reveal } from "@/components/animations/Reveal";
@@ -10,6 +10,7 @@ import { departments, type DepartmentId } from "@/data/departments";
 export const departmentIcons: Record<DepartmentId, LucideIcon> = {
   tech: Code2,
   design: PenTool,
+  finance: Coins,
   operations: Settings,
   mns: Megaphone,
 };

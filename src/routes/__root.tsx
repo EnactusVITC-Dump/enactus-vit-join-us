@@ -83,14 +83,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Join Enactus VIT Chennai. Recruitment 2026 is open across Tech, Creative, Finance, Operations and MNS.",
+          "Join Enactus VIT Chennai. Recruitment 2026 is open across Tech, Design, Finance, Operations and MNS.",
       },
       { name: "author", content: "Enactus VIT Chennai" },
       { property: "og:title", content: "Enactus VIT Chennai — Recruitment 2026" },
       {
         property: "og:description",
         content:
-          "Join Enactus VIT Chennai. Recruitment 2026 is open across Tech, Creative, Finance, Operations and MNS.",
+          "Join Enactus VIT Chennai. Recruitment 2026 is open across Tech, Design, Finance, Operations and MNS.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -106,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
     ],
   }),
   shellComponent: RootShell,

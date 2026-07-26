@@ -1,4 +1,5 @@
 
+import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -43,9 +44,9 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <Button asChild size="sm" className="hidden sm:inline-flex">
-            <a href="/#departments">
+            <Link to="/apply">
               Join the team <ArrowUpRight />
-            </a>
+            </Link>
           </Button>
           <button
             type="button"
@@ -72,9 +73,9 @@ export function Navbar() {
               </a>
             ))}
             <Button asChild size="md" className="mt-3">
-              <a href="/#departments" onClick={() => setOpen(false)}>
+              <Link to="/apply" onClick={() => setOpen(false)}>
                 Join the team <ArrowUpRight />
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

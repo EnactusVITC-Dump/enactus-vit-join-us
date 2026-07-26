@@ -6,10 +6,11 @@ import { cn } from "@/lib/utils";
 export function Logo({ tone = "dark", className }: { tone?: "dark" | "light"; className?: string }) {
   return (
     <Link to="/" className={cn("group flex items-center gap-3", className)}>
-      <svg viewBox="0 0 40 40" className="size-8 shrink-0" aria-hidden="true">
-        <path d="M4 4 L26 12 L14 18 Z" fill="var(--primary)" />
-        <path d="M14 18 L26 12 L20 32 Z" fill="var(--primary)" opacity="0.55" />
-      </svg>
+      <img
+        src="/favicon.svg"
+        alt="Enactus Logo"
+        className="size-8 shrink-0 object-contain"
+      />
       <span className="leading-none">
         <span
           className={cn(

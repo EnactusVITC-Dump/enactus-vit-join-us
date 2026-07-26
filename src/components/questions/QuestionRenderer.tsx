@@ -1,6 +1,7 @@
 import {
   CheckboxGroup,
   FieldShell,
+  FileUpload,
   RadioGroup,
   Select,
   TextArea,
@@ -77,7 +78,9 @@ function QuestionField({
         <CheckboxGroup options={question.options ?? []} value={list} onChange={onChange} />
       ) : null}
 
-
+      {question.type === "file" ? (
+        <FileUpload fileName={text} onFile={onChange} />
+      ) : null}
     </FieldShell>
   );
 }

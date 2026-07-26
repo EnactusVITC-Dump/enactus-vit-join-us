@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApplyRouteImport } from './routes/apply'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SuccessRouteImport } from './routes/success'
 import { Route as ApplyDepartmentIdRouteImport } from './routes/apply.$departmentId'
@@ -17,6 +18,11 @@ import { Route as ApplyDepartmentIdRouteImport } from './routes/apply.$departmen
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApplyRoute = ApplyRouteImport.update({
+  id: '/apply',
+  path: '/apply',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -30,19 +36,21 @@ const SuccessRoute = SuccessRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplyDepartmentIdRoute = ApplyDepartmentIdRouteImport.update({
-  id: '/apply/$departmentId',
-  path: '/apply/$departmentId',
-  getParentRoute: () => rootRouteImport,
+  id: '/$departmentId',
+  path: '/$departmentId',
+  getParentRoute: () => ApplyRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/apply': typeof ApplyRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success': typeof SuccessRoute
   '/apply/$departmentId': typeof ApplyDepartmentIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/apply': typeof ApplyRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success': typeof SuccessRoute
   '/apply/$departmentId': typeof ApplyDepartmentIdRoute
@@ -50,23 +58,31 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/apply': typeof ApplyRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success': typeof SuccessRoute
   '/apply/$departmentId': typeof ApplyDepartmentIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sitemap.xml' | '/success' | '/apply/$departmentId'
+  fullPaths:
+    '/' | '/apply' | '/sitemap.xml' | '/success' | '/apply/$departmentId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sitemap.xml' | '/success' | '/apply/$departmentId'
-  id: '__root__' | '/' | '/sitemap.xml' | '/success' | '/apply/$departmentId'
+  to: '/' | '/apply' | '/sitemap.xml' | '/success' | '/apply/$departmentId'
+  id:
+    | '__root__'
+    | '/'
+    | '/apply'
+    | '/sitemap.xml'
+    | '/success'
+    | '/apply/$departmentId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApplyRoute: typeof ApplyRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SuccessRoute: typeof SuccessRoute
-  ApplyDepartmentIdRoute: typeof ApplyDepartmentIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -76,6 +92,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apply': {
+      id: '/apply'
+      path: '/apply'
+      fullPath: '/apply'
+      preLoaderRoute: typeof ApplyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -94,19 +117,29 @@ declare module '@tanstack/react-router' {
     }
     '/apply/$departmentId': {
       id: '/apply/$departmentId'
-      path: '/apply/$departmentId'
+      path: '/$departmentId'
       fullPath: '/apply/$departmentId'
       preLoaderRoute: typeof ApplyDepartmentIdRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ApplyRoute
     }
   }
 }
 
+interface ApplyRouteChildren {
+  ApplyDepartmentIdRoute: typeof ApplyDepartmentIdRoute
+}
+
+const ApplyRouteChildren: ApplyRouteChildren = {
+  ApplyDepartmentIdRoute: ApplyDepartmentIdRoute,
+}
+
+const ApplyRouteWithChildren = ApplyRoute._addFileChildren(ApplyRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApplyRoute: ApplyRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SuccessRoute: SuccessRoute,
-  ApplyDepartmentIdRoute: ApplyDepartmentIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

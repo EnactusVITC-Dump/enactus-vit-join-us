@@ -14,10 +14,11 @@ export function Footer() {
         <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <div className="flex items-center gap-3">
-              <svg viewBox="0 0 40 40" className="size-9" aria-hidden="true">
-                <path d="M4 4 L26 12 L14 18 Z" fill="var(--primary)" />
-                <path d="M14 18 L26 12 L20 32 Z" fill="var(--primary)" opacity="0.55" />
-              </svg>
+              <img
+                src="/favicon.svg"
+                alt="Enactus Logo"
+                className="size-9 shrink-0 object-contain"
+              />
               <span className="leading-none">
                 <span className="block text-2xl font-bold tracking-tight">enactus</span>
                 <span className="block text-[10px] font-semibold tracking-[0.35em] text-primary">
@@ -69,6 +70,15 @@ export function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/apply"
+                  className="group flex items-center gap-2 text-ink-foreground/70 transition-colors hover:text-primary"
+                >
+                  <ChevronRight className="size-3.5 text-primary" />
+                  Apply Now
+                </Link>
+              </li>
             </ul>
           </div>
 
