@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageIntro } from "@/components/layout/PageIntro";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { faqs } from "@/data/faqs";
 
 const title = "FAQs — Enactus VIT Chennai Recruitment";
 const description =
