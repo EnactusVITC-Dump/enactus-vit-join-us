@@ -1,11 +1,15 @@
 import { motion, useReducedMotion } from "motion/react";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const COLORS = ["var(--primary)", "var(--ink)", "var(--muted-foreground)"];
 
-/** Lightweight DOM confetti burst — no canvas, no gradients. */
+/** Lightweight DOM confetti burst — no canvas, no gradients. Client-only. */
 export function Confetti({ pieces = 60 }: { pieces?: number }) {
   const reduced = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
   const shapes = useMemo(
     () =>
       Array.from({ length: pieces }, (_, i) => ({
@@ -21,7 +25,8 @@ export function Confetti({ pieces = 60 }: { pieces?: number }) {
     [pieces],
   );
 
-  if (reduced) return null;
+  if (reduced || !mounted) return null;
+
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
