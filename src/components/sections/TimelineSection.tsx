@@ -55,8 +55,8 @@ export function TimelineSection() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="display mt-0 text-2xl lg:mt-8">{step.title}</h3>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground/0">
-                  <span className="text-foreground/60">{step.date}</span>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-foreground/55">
+                  {step.date}
                 </p>
                 <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
                   {step.description}
