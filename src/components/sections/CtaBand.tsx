@@ -15,7 +15,7 @@ export function CtaBand() {
                 Be the change. Join Enactus VITC.
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-primary-foreground/75">
-                Applications for the 2026 cohort close on July 24. It takes about ten minutes.
+                Applications for the 2026 cohort close on July 31. It takes about ten minutes.
               </p>
             </div>
             <Button asChild size="lg" variant="ink">

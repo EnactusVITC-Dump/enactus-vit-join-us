@@ -22,8 +22,8 @@ export function FaqSection() {
           </h2>
           <p className="mt-6 max-w-xs text-base leading-relaxed text-muted-foreground">
             Still stuck? Write to us at{" "}
-            <a href="mailto:enactusvitc@gmail.com" className="font-medium text-foreground underline decoration-primary decoration-2 underline-offset-4">
-              enactusvitc@gmail.com
+            <a href="mailto:enactus.vitc@gmail.com" className="font-medium text-foreground underline decoration-primary decoration-2 underline-offset-4">
+              enactus.vitc@gmail.com
             </a>
             .
           </p>

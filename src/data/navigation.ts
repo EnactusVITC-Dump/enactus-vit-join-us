@@ -6,13 +6,13 @@ export const navLinks = [
 ] as const;
 
 export const contact = {
-  email: "enactusvitc@gmail.com",
-  phone: "+91 98765 43210",
+  email: "enactus.vitc@gmail.com",
+  phone: "+91 85919 06752",
   address: ["Vellore Institute of Technology", "Chennai, Tamil Nadu — 600127"],
 };
 
 export const socials = [
-  { label: "Instagram", href: "https://instagram.com", icon: "Instagram" },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: "Linkedin" },
-  { label: "YouTube", href: "https://youtube.com", icon: "Youtube" },
+  { label: "Instagram", href: "https://www.instagram.com/enactusvitc/", icon: "Instagram" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/enactusvitc/posts/?feedView=all", icon: "Linkedin" },
+  //{ label: "YouTube", href: "https://youtube.com", icon: "Youtube" },
 ] as const;

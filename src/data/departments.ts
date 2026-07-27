@@ -64,7 +64,7 @@ export const departments: Department[] = [
   },
   {
     id: "mns",
-    name: "MNS",
+    name: "Marketing & Sponsorship",
     shortName: "MNS",
     tagline: "Marketing, Networking & Sponsorship",
     description:
