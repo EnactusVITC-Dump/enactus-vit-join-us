@@ -51,8 +51,8 @@ export const departments: Department[] = [
   },
   {
     id: "operations",
-    name: "Operations",
-    shortName: "Operations",
+    name: "Operations & HR",
+    shortName: "Operations & HR",
     tagline: "Makes the plan actually happen",
     description:
       "Runs logistics, timelines and field execution so ideas move from a document to a village, campus or market.",
