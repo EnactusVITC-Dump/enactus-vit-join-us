@@ -17,7 +17,7 @@ export const faqs: Faq[] = [
   {
     question: "How much time does it take every week?",
     answer:
-      "Plan for four to six hours a week, with heavier weeks around field visits, competitions and launches. Academics come first, always.",
+      "The level of involvement depends on the projects and events you're part of. We expect members to contribute consistently while prioritising their academics.",
   },
   {
     question: "Can I choose more than one department?",

@@ -37,7 +37,6 @@ export const personalQuestions: Question[] = [
     options: ["First year", "Second year", "Third year", "Fourth year"],
     required: true,
   },
-  { id: "branch", label: "Branch", type: "text", placeholder: "e.g. CSE, Mechanical", required: true },
   {
     id: "motivation",
     label: "Why do you want to join Enactus VITC?",
@@ -45,34 +44,27 @@ export const personalQuestions: Question[] = [
     placeholder: "Two or three honest sentences are enough.",
     required: true,
   },
-  {
-    id: "availability",
-    label: "Weekly availability",
-    type: "radio",
-    options: ["Under 4 hours", "4 — 6 hours", "6 — 10 hours", "More than 10 hours"],
-    required: true,
-  },
 ];
 
 /** Common closing questions, asked once after the department rounds. */
 export const projectQuestions: Question[] = [
-  { id: "github", label: "GitHub profile", type: "link", placeholder: "https://github.com/username" },
-  { id: "linkedin", label: "LinkedIn profile", type: "link", placeholder: "https://linkedin.com/in/username" },
-  { id: "portfolio", label: "Portfolio / website", type: "link", placeholder: "https://yourwork.com" },
-
+  {
+    id: "additionalLinks",
+    label: "Anything else you'd like us to check out?",
+    type: "textarea",
+    help: "Share any links that might help us know you better — GitHub, LinkedIn, portfolio, projects, resume, or anything else you'd like to share. This is completely optional and is only for additional context; it will not be considered as part of the selection criteria.",
+  },
   {
     id: "bestProject",
     label: "Your best project so far",
     type: "text",
     placeholder: "Project name",
-    required: true,
   },
   {
     id: "projectDescription",
     label: "Describe that project",
     type: "textarea",
     placeholder: "What was the problem, what did you build, and what happened after?",
-    required: true,
   },
 ];
 

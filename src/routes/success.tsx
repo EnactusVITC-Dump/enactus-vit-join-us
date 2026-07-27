@@ -62,7 +62,7 @@ function SuccessPage() {
           {timeline.slice(1, 4).map((step, i) => (
             <motion.div
               key={step.id}
-              className="rounded-2xl border border-hairline bg-card p-6 shadow-soft"
+              className="rounded-sm border border-hairline bg-card p-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
@@ -82,7 +82,7 @@ function SuccessPage() {
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <a href="mailto:enactusvitc@gmail.com">
+            <a href="mailto:enactus.vitc@gmail.com?subject=Enactus%20VITC%20Recruitment%20Query">
               <Mail /> Email the team
             </a>
           </Button>
