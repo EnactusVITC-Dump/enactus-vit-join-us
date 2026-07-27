@@ -1,4 +1,4 @@
-export type DepartmentId = "tech" | "design" | "finance" | "operations" | "mns";
+export type DepartmentId = "tech" | "creative" | "finance" | "operations" | "mns";
 
 export interface Department {
   id: DepartmentId;
@@ -24,9 +24,9 @@ export const departments: Department[] = [
     ],
   },
   {
-    id: "design",
-    name: "Design",
-    shortName: "Design",
+    id: "creative",
+    name: "Creative",
+    shortName: "Creative",
     tagline: "Tells our story through visuals and film",
     description:
       "Turns fieldwork into films, posters and campaigns that make people care about the work.",

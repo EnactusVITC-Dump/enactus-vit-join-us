@@ -9,7 +9,7 @@ import { departments, type DepartmentId } from "@/data/departments";
 
 export const departmentIcons: Record<DepartmentId, LucideIcon> = {
   tech: Code2,
-  design: PenTool,
+  creative: PenTool,
   finance: Coins,
   operations: Settings,
   mns: Megaphone,

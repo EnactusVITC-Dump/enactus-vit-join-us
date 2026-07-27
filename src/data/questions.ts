@@ -34,7 +34,7 @@ export const personalQuestions: Question[] = [
     id: "year",
     label: "Academic year",
     type: "select",
-    options: ["First year", "Second year", "Third year", "Fourth year"],
+    options: ["First year", "Second year"],
     required: true,
   },
   {
@@ -105,7 +105,7 @@ export const departmentQuestions: Record<DepartmentId, Question[]> = {
       required: true,
     },
   ],
-  design: [
+  creative: [
     {
       id: "design_skills",
       label: "Where do you do your best work?",
