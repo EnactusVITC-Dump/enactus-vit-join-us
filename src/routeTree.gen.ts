@@ -9,20 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as ApplyRouteImport } from './routes/apply'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SuccessRouteImport } from './routes/success'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ApplyRouteImport } from './routes/apply'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApplyDepartmentIdRouteImport } from './routes/apply.$departmentId'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApplyRoute = ApplyRouteImport.update({
-  id: '/apply',
-  path: '/apply',
+const SuccessRoute = SuccessRouteImport.update({
+  id: '/success',
+  path: '/success',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -30,9 +25,14 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SuccessRoute = SuccessRouteImport.update({
-  id: '/success',
-  path: '/success',
+const ApplyRoute = ApplyRouteImport.update({
+  id: '/apply',
+  path: '/apply',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplyDepartmentIdRoute = ApplyDepartmentIdRouteImport.update({
@@ -66,7 +66,11 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/apply' | '/sitemap.xml' | '/success' | '/apply/$departmentId'
+    | '/'
+    | '/apply'
+    | '/sitemap.xml'
+    | '/success'
+    | '/apply/$departmentId'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/apply' | '/sitemap.xml' | '/success' | '/apply/$departmentId'
   id:
@@ -87,18 +91,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/apply': {
-      id: '/apply'
-      path: '/apply'
-      fullPath: '/apply'
-      preLoaderRoute: typeof ApplyRouteImport
+    '/success': {
+      id: '/success'
+      path: '/success'
+      fullPath: '/success'
+      preLoaderRoute: typeof SuccessRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -108,11 +105,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/success': {
-      id: '/success'
-      path: '/success'
-      fullPath: '/success'
-      preLoaderRoute: typeof SuccessRouteImport
+    '/apply': {
+      id: '/apply'
+      path: '/apply'
+      fullPath: '/apply'
+      preLoaderRoute: typeof ApplyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apply/$departmentId': {

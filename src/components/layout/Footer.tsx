@@ -35,9 +35,9 @@ export function Footer() {
             </p>
             <div className="mt-8 flex gap-3">
               {[
-                { label: "Instagram", href: "https://instagram.com", icon: "Instagram" as const },
-                { label: "LinkedIn", href: "https://linkedin.com", icon: "Linkedin" as const },
-                { label: "YouTube", href: "https://youtube.com", icon: "Youtube" as const },
+                { label: "Instagram", href: "https://www.instagram.com/enactusvitc/", icon: "Instagram" as const },
+                { label: "LinkedIn", href: "https://www.linkedin.com/company/enactusvitc/posts/?feedView=all", icon: "Linkedin" as const },
+                //{ label: "YouTube", href: "https://youtube.com", icon: "Youtube" as const },
               ].map((s) => {
                 const Icon = socialIcons[s.icon];
                 return (
