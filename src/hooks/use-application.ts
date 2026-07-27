@@ -43,7 +43,30 @@ export function useApplication() {
   }, [state, hydrated]);
 
   const setAnswer = useCallback((id: string, value: AnswerValue) => {
-    setState((prev) => ({ ...prev, answers: { ...prev.answers, [id]: value } }));
+    setState((prev) => {
+      const newAnswers = { ...prev.answers, [id]: value };
+
+      if (id === "creative_preferences") {
+        const prefs = (value as string[]) || [];
+        if (!prefs.includes("Design")) {
+          Object.keys(newAnswers).forEach((k) => {
+            if (k.startsWith("design_")) delete newAnswers[k];
+          });
+        }
+        if (!prefs.includes("Video Editing")) {
+          Object.keys(newAnswers).forEach((k) => {
+            if (k.startsWith("video_")) delete newAnswers[k];
+          });
+        }
+        if (!prefs.includes("Content")) {
+          Object.keys(newAnswers).forEach((k) => {
+            if (k.startsWith("content_")) delete newAnswers[k];
+          });
+        }
+      }
+
+      return { ...prev, answers: newAnswers };
+    });
   }, []);
 
   const setPreference = useCallback((slot: "first" | "second", value: DepartmentId | null) => {

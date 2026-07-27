@@ -2,7 +2,7 @@ import { Pencil } from "lucide-react";
 
 import { Button } from "@/components/kit/Button";
 import { departmentMap, type DepartmentId } from "@/data/departments";
-import { departmentQuestions, personalQuestions, projectQuestions, type Question } from "@/data/questions";
+import { getFilteredQuestions, personalQuestions, projectQuestions, type Question } from "@/data/questions";
 import type { Answers } from "@/hooks/use-application";
 
 function formatValue(answers: Answers, q: Question) {
@@ -89,13 +89,13 @@ export function ReviewStep({
       />
       <ReviewBlock
         title={`${departmentMap[first].shortName} answers`}
-        questions={departmentQuestions[first]}
+        questions={getFilteredQuestions(first, answers)}
         answers={answers}
         onEdit={() => onEdit(2)}
       />
       <ReviewBlock
         title={`${departmentMap[second].shortName} answers`}
-        questions={departmentQuestions[second]}
+        questions={getFilteredQuestions(second, answers)}
         answers={answers}
         onEdit={() => onEdit(3)}
       />

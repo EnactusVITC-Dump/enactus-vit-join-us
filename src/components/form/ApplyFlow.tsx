@@ -11,7 +11,7 @@ import { Card } from "@/components/kit/Card";
 import { StepHeader } from "@/components/kit/Progress";
 import { QuestionRenderer, missingIds } from "@/components/questions/QuestionRenderer";
 import { departmentMap, type DepartmentId } from "@/data/departments";
-import { departmentQuestions, personalQuestions, projectQuestions } from "@/data/questions";
+import { getFilteredQuestions, personalQuestions, projectQuestions } from "@/data/questions";
 import { useApplication } from "@/hooks/use-application";
 
 const TOTAL_STEPS = 6;
@@ -37,11 +37,11 @@ export function ApplyFlow({ defaultFirst }: { defaultFirst?: string }) {
 
   const activeQuestions = useMemo(() => {
     if (step === 1) return personalQuestions;
-    if (step === 2 && first) return departmentQuestions[first];
-    if (step === 3 && second) return departmentQuestions[second];
+    if (step === 2 && first) return getFilteredQuestions(first, answers);
+    if (step === 3 && second) return getFilteredQuestions(second, answers);
     if (step === 4) return projectQuestions;
     return [];
-  }, [step, first, second]);
+  }, [step, first, second, answers]);
 
   const meta = useMemo(() => {
     switch (step) {

@@ -121,6 +121,13 @@ export const departmentQuestions: Record<DepartmentId, Question[]> = {
   ],
   creative: [
     {
+      id: "creative_preferences",
+      label: "Which Creative sub-department(s) are you interested in?",
+      type: "checkbox",
+      options: ["Design", "Video Editing", "Content"],
+      required: true,
+    },
+    {
       id: "design_software",
       label: "Which design software are you comfortable with?",
       type: "checkbox",
@@ -249,3 +256,18 @@ export const departmentQuestions: Record<DepartmentId, Question[]> = {
     },
   ],
 };
+
+export function getFilteredQuestions(dept: DepartmentId, answers: Record<string, any>): Question[] {
+  const qs = departmentQuestions[dept];
+  if (dept !== "creative") return qs;
+  
+  const prefs = (answers["creative_preferences"] as string[]) || [];
+  return qs.filter(q => {
+    if (q.id === "creative_preferences") return true;
+    if (q.id.startsWith("design_")) return prefs.includes("Design");
+    if (q.id.startsWith("video_")) return prefs.includes("Video Editing");
+    if (q.id.startsWith("content_")) return prefs.includes("Content");
+    return true;
+  });
+}
+
