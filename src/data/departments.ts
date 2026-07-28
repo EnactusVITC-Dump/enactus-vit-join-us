@@ -66,9 +66,9 @@ export const departments: Department[] = [
     id: "mns",
     name: "Outreach",
     shortName: "Outreach",
-    tagline: "Marketing, Networking and Sponsorship",
+    tagline: "Marketing, Networking and Collaborations",
     description:
-      "Opens doors — sponsors, partners, alumni and media — and keeps the outside world invested in us.",
+      "Expands our reach through marketing, meaningful partnerships, and external collaborations.",
     responsibilities: [
       "Pitch and close sponsorships",
       "Build partner and alumni relationships",
