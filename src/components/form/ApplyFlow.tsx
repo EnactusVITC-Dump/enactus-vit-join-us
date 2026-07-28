@@ -16,7 +16,7 @@ import { useApplication } from "@/hooks/use-application";
 
 const TOTAL_STEPS = 6;
 
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVMAQoqN9Mlc5dhofS_fAvvg7uJfbR-97z31HWygDjRAszmRejDTPjuvyQRPfSmUBDuw/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxRemoNG3Fu66GCmOx50tmghujMCVx0j75vvT5MiCubzhttJnyzjBz1B4tR7am2sTk/exec";
 
 export function ApplyFlow({ defaultFirst }: { defaultFirst?: string }) {
   const navigate = useNavigate();
